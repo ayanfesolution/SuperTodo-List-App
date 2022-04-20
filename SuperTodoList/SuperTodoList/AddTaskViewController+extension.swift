@@ -10,7 +10,7 @@ import UIKit
 extension AddTaskViewController {
     
     func setupViews() {
-        let subviewList = [titleTextField, descriptionTextView, descriptionLabel, duedateButton, timeButton, addtaskButton]
+        let subviewList = [titleTextField, descriptionTextView, descriptionLabel, duedateButton, addtaskButton]
         subviewList.forEach { subview in
             view.addSubview(subview)
         }
@@ -35,14 +35,6 @@ extension AddTaskViewController {
             //MARK: - Due date button
             duedateButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             duedateButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 10),
-            duedateButton.heightAnchor.constraint(equalToConstant: 30),
-            duedateButton.widthAnchor.constraint(equalToConstant: 100),
-            
-            //MARK: - Time button
-            timeButton.leadingAnchor.constraint(equalTo: duedateButton.trailingAnchor, constant: 5),
-            timeButton.topAnchor.constraint(equalTo: descriptionTextView.bottomAnchor, constant: 10),
-            timeButton.heightAnchor.constraint(equalToConstant: 30),
-            timeButton.widthAnchor.constraint(equalToConstant: 100),
             
             //MARK: - Add task button
             addtaskButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),

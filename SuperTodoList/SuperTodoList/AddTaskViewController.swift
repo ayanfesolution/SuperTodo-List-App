@@ -29,33 +29,19 @@ class AddTaskViewController: UIViewController {
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
-        textView.textAlignment = .center
+        textView.textAlignment = .left
         textView.backgroundColor = .systemGray6
         textView.translatesAutoresizingMaskIntoConstraints = false
                
         return textView
     }()
     
-    let duedateButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Due Date", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .blue
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    let timeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Time", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .gray
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
+    let duedateButton: UIDatePicker = {
+        let date = UIDatePicker()
+        date.date = .now
+        date.translatesAutoresizingMaskIntoConstraints = false
+        date.backgroundColor = .systemGray6
+        return date
     }()
     
     let addtaskButton: UIButton = {
