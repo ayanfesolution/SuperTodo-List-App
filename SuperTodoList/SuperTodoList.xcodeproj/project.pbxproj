@@ -115,6 +115,7 @@
 				847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */,
 				847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */,
 				847B5498280DBF4300B315F4 /* AddTaskViewController+extension.swift */,
+				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
 				849EB25F280AC2BC00CA552B /* Assets.xcassets */,
 				849EB261280AC2BC00CA552B /* LaunchScreen.storyboard */,
 				849EB264280AC2BC00CA552B /* Info.plist */,

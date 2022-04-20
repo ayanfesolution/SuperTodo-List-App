@@ -8,8 +8,16 @@
 import UIKit
 
 extension OnboardingViewController {
- 
+    
+    @objc func didTapGetstarted() {
+        let MainScreenTabBarViewController = MainScreenTabBarViewController()
+        MainScreenTabBarViewController.modalPresentationStyle = .fullScreen
+        present(MainScreenTabBarViewController, animated: true)
+    }
+    
     func setupViews() {
+        
+      
         
         let subviewsList = [onboardingImage, welcomeLabel, getstartedButton, whatshappeningtodayLabel, skipButton]
         
@@ -47,5 +55,10 @@ extension OnboardingViewController {
             
         ])
         
+    }
+    @objc func didTapSkip() {
+        let MainScreenTabBarViewController = MainScreenTabBarViewController()
+        MainScreenTabBarViewController.modalPresentationStyle = .fullScreen
+        present(MainScreenTabBarViewController, animated: true)
     }
 }

@@ -45,11 +45,18 @@ extension AddTaskViewController {
             timeButton.widthAnchor.constraint(equalToConstant: 100),
             
             //MARK: - Add task button
-            addtaskButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            addtaskButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             addtaskButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             addtaskButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             addtaskButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
+    }
+    
+    @objc func didTapAddTask() {
+        let alertController = UIAlertController(title: "Successful", message: "Task successfully added", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
