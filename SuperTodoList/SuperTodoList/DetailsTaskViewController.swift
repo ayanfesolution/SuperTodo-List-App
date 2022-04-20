@@ -9,6 +9,8 @@ import UIKit
 
 class DetailsTaskUIViewController: UIViewController {
     
+    var item : Int = 0
+    
     let taskTitle: UILabel = {
        let task = UILabel()
         task.font = .systemFont(ofSize: 25, weight: .medium)

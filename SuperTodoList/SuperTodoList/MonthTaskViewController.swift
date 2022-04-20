@@ -34,12 +34,13 @@ class MonthsTaskViewController: UIViewController {
         }
         
         func setupView(){
-            monthTaskTableView.register(MonthTaskTableViewCell.self, forCellReuseIdentifier: "monthDetails")
+            monthTaskTableView.register(MonthTaskTableViewCell.self, forCellReuseIdentifier: MonthTaskTableViewCell.identifier)
             
             
             view.addSubview(monthsLabel)
             view.addSubview(monthTaskTableView)
             monthTaskTableView.dataSource = self
+            monthTaskTableView.delegate = self
             
             
             monthTaskTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,15 +62,27 @@ class MonthsTaskViewController: UIViewController {
 
     }
 
-    extension MonthsTaskViewController: UITableViewDataSource {
+    extension MonthsTaskViewController: UITableViewDataSource, UITableViewDelegate {
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return 20
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "monthDetails", for: indexPath) as! MonthTaskTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: MonthTaskTableViewCell.identifier, for: indexPath) as! MonthTaskTableViewCell
             
+            cell.configure(tasks: "Go and buy Bread", imageName: "circle.circle")
             return cell
         }
+        
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+           return 50
+        }
+        
+        func tableView(_ tableView: UITableView,
+                          didSelectRowAt indexPath: IndexPath) {
+                let detailVC = DetailsTaskUIViewController()
+            detailVC.modalPresentationStyle = .fullScreen
+               show(detailVC, sender: self)
+           }
 
 }

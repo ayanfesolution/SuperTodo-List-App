@@ -22,18 +22,6 @@ class TodaysTaskViewController: UIViewController {
     
     let todayTaskTableView = UITableView()
     
-    //MARK: Creating an instance of the Tomorrow task label and table view
-    
-    let tomorrowLabel : UILabel = {
-        let tomorrow = UILabel()
-        tomorrow.textColor = .black
-        tomorrow.textAlignment = .center
-        tomorrow.translatesAutoresizingMaskIntoConstraints = false
-        tomorrow.text = "What You Have To Do Today"
-        tomorrow.font = .systemFont(ofSize: 20, weight: .semibold)
-        return tomorrow
-    }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,15 +31,21 @@ class TodaysTaskViewController: UIViewController {
     }
     
     func setupView(){
-        todayTaskTableView.register(TodaysTaskTableViewCell.self, forCellReuseIdentifier: "todayDetails")
+        
+        todayTaskTableView.register(TodaysTaskTableViewCell.self, forCellReuseIdentifier: TodaysTaskTableViewCell.identifier)
         
         
         view.addSubview(todaysLabel)
         view.addSubview(todayTaskTableView)
         todayTaskTableView.dataSource = self
+        todayTaskTableView.delegate = self
         
         
         todayTaskTableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+      
+
 
         //constrainsts
         NSLayoutConstraint.activate([
@@ -70,17 +64,28 @@ class TodaysTaskViewController: UIViewController {
 
 }
 
-extension TodaysTaskViewController: UITableViewDataSource {
+extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "todayDetails", for: indexPath) as! TodaysTaskTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TodaysTaskTableViewCell.identifier, for: indexPath) as! TodaysTaskTableViewCell
         
-        
+        cell.configure(tasks: "Go and buy Bread", imageName: "circle.circle")
         return cell
     }
     
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+       return 50
+    }
+    
+    func tableView(_ tableView: UITableView,
+                      didSelectRowAt indexPath: IndexPath) {
+            let detailVC = DetailsTaskUIViewController()
+        detailVC.modalPresentationStyle = .fullScreen
+           show(detailVC, sender: self)
+       }
 }
