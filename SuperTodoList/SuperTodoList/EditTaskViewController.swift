@@ -65,7 +65,7 @@ class EditTaskViewController: UIViewController {
     let taskDate : UIDatePicker = {
        let date = UIDatePicker()
         date.translatesAutoresizingMaskIntoConstraints = false
-        
+        date.datePickerMode = .dateAndTime
         date.date = .now
         
         return date
