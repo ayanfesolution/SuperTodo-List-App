@@ -63,14 +63,16 @@ class AddTaskViewController: UIViewController {
         button.setTitle("Add Task", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .orange
+        button.backgroundColor = .blue
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(didTapAddTask), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.title = "Add Task"
 
         setupViews()
     }

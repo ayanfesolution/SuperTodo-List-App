@@ -14,6 +14,7 @@ class OnboardingViewController: UIViewController {
         button.setTitle("Skip", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapSkip), for: .touchUpInside)
         return button
         
     }()
@@ -54,6 +55,7 @@ class OnboardingViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapGetstarted), for: .touchUpInside)
         return button
     }()
     
