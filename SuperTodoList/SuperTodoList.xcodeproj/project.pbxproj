@@ -15,6 +15,10 @@
 		049FB60E280F5731005E07E3 /* MonthTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB60C280F5731005E07E3 /* MonthTaskViewController.swift */; };
 		049FB610280F5746005E07E3 /* DetailsTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */; };
 		049FB611280F5746005E07E3 /* DetailsTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */; };
+		049FB613280F7199005E07E3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB612280F7198005E07E3 /* TableViewCell.swift */; };
+		049FB614280F7199005E07E3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB612280F7198005E07E3 /* TableViewCell.swift */; };
+		049FB68E28100955005E07E3 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB68D28100955005E07E3 /* EditTaskViewController.swift */; };
+		049FB68F28100955005E07E3 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB68D28100955005E07E3 /* EditTaskViewController.swift */; };
 		847B5491280DA1F500B315F4 /* OnboardingViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */; };
 		847B5493280DBD5C00B315F4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */; };
 		847B5497280DBEC400B315F4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5496280DBEC400B315F4 /* OnboardingViewController.swift */; };
@@ -42,6 +46,8 @@
 		049FB609280F5712005E07E3 /* TobayTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TobayTaskViewController.swift; sourceTree = "<group>"; };
 		049FB60C280F5731005E07E3 /* MonthTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTaskViewController.swift; sourceTree = "<group>"; };
 		049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTaskViewController.swift; sourceTree = "<group>"; };
+		049FB612280F7198005E07E3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		049FB68D28100955005E07E3 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController+extension.swift"; sourceTree = "<group>"; };
 		847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		847B5496280DBEC400B315F4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +105,11 @@
 				849EB256280AC2BA00CA552B /* AppDelegate.swift */,
 				849EB258280AC2BA00CA552B /* SceneDelegate.swift */,
 				049FB609280F5712005E07E3 /* TobayTaskViewController.swift */,
+				049FB612280F7198005E07E3 /* TableViewCell.swift */,
+				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
 				049FB60C280F5731005E07E3 /* MonthTaskViewController.swift */,
 				049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */,
+				049FB68D28100955005E07E3 /* EditTaskViewController.swift */,
 				849EB25A280AC2BA00CA552B /* ViewController.swift */,
 				847B5496280DBEC400B315F4 /* OnboardingViewController.swift */,
 				847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */,
@@ -109,7 +118,6 @@
 				849EB25F280AC2BC00CA552B /* Assets.xcassets */,
 				849EB261280AC2BC00CA552B /* LaunchScreen.storyboard */,
 				849EB264280AC2BC00CA552B /* Info.plist */,
-				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
 			);
 			path = SuperTodoList;
 			sourceTree = "<group>";
@@ -230,8 +238,10 @@
 				049FB60D280F5731005E07E3 /* MonthTaskViewController.swift in Sources */,
 				849EB257280AC2BA00CA552B /* AppDelegate.swift in Sources */,
 				849EB259280AC2BA00CA552B /* SceneDelegate.swift in Sources */,
+				049FB68E28100955005E07E3 /* EditTaskViewController.swift in Sources */,
 				847B5493280DBD5C00B315F4 /* AddTaskViewController.swift in Sources */,
 				049FB607280F56EC005E07E3 /* MainScreenTabBarViewController.swift in Sources */,
+				049FB613280F7199005E07E3 /* TableViewCell.swift in Sources */,
 				049FB60A280F5712005E07E3 /* TobayTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,6 +254,8 @@
 				849EB26E280AC2BC00CA552B /* SuperTodoListTests.swift in Sources */,
 				049FB611280F5746005E07E3 /* DetailsTaskViewController.swift in Sources */,
 				049FB608280F56EC005E07E3 /* MainScreenTabBarViewController.swift in Sources */,
+				049FB614280F7199005E07E3 /* TableViewCell.swift in Sources */,
+				049FB68F28100955005E07E3 /* EditTaskViewController.swift in Sources */,
 				049FB60B280F5712005E07E3 /* TobayTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
