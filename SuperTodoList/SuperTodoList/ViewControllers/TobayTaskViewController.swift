@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class TodaysTaskViewController: UIViewController {
     //MARK: Creating an instance of the Todays task label and table view
+    //let tasks = ["task1", "task2", "task3", "task4"]
+    
+    var todoList = [Task]()
+    var moc:NSManagedObjectContext!
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     let todaysLabel : UILabel = {
         let today = UILabel()
@@ -21,6 +27,7 @@ class TodaysTaskViewController: UIViewController {
     }()
     
     let todayTaskTableView = UITableView()
+    
     
     
     override func viewDidLoad() {
@@ -66,13 +73,16 @@ class TodaysTaskViewController: UIViewController {
 
 extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return todoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TodaysTaskTableViewCell.identifier, for: indexPath) as! TodaysTaskTableViewCell
-        
-        cell.configure(tasks: "Go and buy Bread", imageName: "circle.circle")
+        let todoList = todoList[indexPath.row]
+       
+     //   cell.task1
+        //cell.task.text = tasks[indexPath.row]
+        //cell.configure(tasks: "Go and buy Bread", imageName: "circle.circle")
         return cell
     }
     
