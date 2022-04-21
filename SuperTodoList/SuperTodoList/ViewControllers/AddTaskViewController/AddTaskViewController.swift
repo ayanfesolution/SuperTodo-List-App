@@ -58,7 +58,9 @@ class AddTaskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.popToRootViewController(animated: true)
         navigationItem.title = "Add Task"
+        
 
         setupViews()
     }

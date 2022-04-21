@@ -14,7 +14,7 @@ class TodaysTaskTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(icon)
-        contentView.addSubview(task)
+        contentView.addSubview(task1)
         
     }
     
@@ -28,9 +28,9 @@ class TodaysTaskTableViewCell: UITableViewCell {
         icon.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
         icon.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
         
-        task.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 5).isActive = true
-        task.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        task.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        task1.leftAnchor.constraint(equalTo: icon.rightAnchor, constant: 5).isActive = true
+        task1.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        task1.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
     
     let icon : UIImageView = {
@@ -40,7 +40,7 @@ class TodaysTaskTableViewCell: UITableViewCell {
         return icon
     }()
     
-    let task : UILabel = {
+    let task1 : UILabel = {
         let task = UILabel()
   //      task.text = "Buy breead today"
         task.numberOfLines = 0
@@ -50,13 +50,13 @@ class TodaysTaskTableViewCell: UITableViewCell {
     
     public func configure(tasks: String, imageName: String){
         icon.image = UIImage(systemName: imageName)
-        task.text = tasks
+        task1.text = tasks
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         icon.image = nil
-        task.text = nil
+        task1.text = nil
     }
     
     

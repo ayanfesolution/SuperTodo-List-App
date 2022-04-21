@@ -19,6 +19,7 @@
 		049FB614280F7199005E07E3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB612280F7198005E07E3 /* TableViewCell.swift */; };
 		049FB68E28100955005E07E3 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB68D28100955005E07E3 /* EditTaskViewController.swift */; };
 		049FB68F28100955005E07E3 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049FB68D28100955005E07E3 /* EditTaskViewController.swift */; };
+		8456563528117FB600744590 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8456563328117FB600744590 /* DataModel.xcdatamodeld */; };
 		847B5491280DA1F500B315F4 /* OnboardingViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */; };
 		847B5493280DBD5C00B315F4 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */; };
 		847B5497280DBEC400B315F4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B5496280DBEC400B315F4 /* OnboardingViewController.swift */; };
@@ -48,6 +49,7 @@
 		049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTaskViewController.swift; sourceTree = "<group>"; };
 		049FB612280F7198005E07E3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		049FB68D28100955005E07E3 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		8456563428117FB600744590 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingViewController+extension.swift"; sourceTree = "<group>"; };
 		847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		847B5496280DBEC400B315F4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		845656362811A24300744590 /* OnboardingViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				847B5496280DBEC400B315F4 /* OnboardingViewController.swift */,
+				847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */,
+			);
+			path = OnboardingViewControllers;
+			sourceTree = "<group>";
+		};
+		845656372811A27D00744590 /* AddTaskViewController */ = {
+			isa = PBXGroup;
+			children = (
+				847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */,
+				847B5498280DBF4300B315F4 /* AddTaskViewController+extension.swift */,
+			);
+			path = AddTaskViewController;
+			sourceTree = "<group>";
+		};
+		845656382811A2C000744590 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				845656362811A24300744590 /* OnboardingViewControllers */,
+				845656372811A27D00744590 /* AddTaskViewController */,
+				049FB609280F5712005E07E3 /* TobayTaskViewController.swift */,
+				049FB60C280F5731005E07E3 /* MonthTaskViewController.swift */,
+				049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */,
+				049FB68D28100955005E07E3 /* EditTaskViewController.swift */,
+				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
+				849EB25A280AC2BA00CA552B /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		845656392811A2E800744590 /* Application Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				849EB256280AC2BA00CA552B /* AppDelegate.swift */,
+				849EB258280AC2BA00CA552B /* SceneDelegate.swift */,
+			);
+			path = "Application Delegates";
+			sourceTree = "<group>";
+		};
+		8456563A2811A30C00744590 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				049FB612280F7198005E07E3 /* TableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		8456563B2811A31700744590 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				8456563328117FB600744590 /* DataModel.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		8456563C2811A33300744590 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				849EB25F280AC2BC00CA552B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		849EB24A280AC2BA00CA552B = {
 			isa = PBXGroup;
 			children = (
@@ -102,21 +170,11 @@
 		849EB255280AC2BA00CA552B /* SuperTodoList */ = {
 			isa = PBXGroup;
 			children = (
-				849EB256280AC2BA00CA552B /* AppDelegate.swift */,
-				849EB258280AC2BA00CA552B /* SceneDelegate.swift */,
-				049FB609280F5712005E07E3 /* TobayTaskViewController.swift */,
-				049FB612280F7198005E07E3 /* TableViewCell.swift */,
-				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
-				049FB60C280F5731005E07E3 /* MonthTaskViewController.swift */,
-				049FB60F280F5746005E07E3 /* DetailsTaskViewController.swift */,
-				049FB68D28100955005E07E3 /* EditTaskViewController.swift */,
-				849EB25A280AC2BA00CA552B /* ViewController.swift */,
-				847B5496280DBEC400B315F4 /* OnboardingViewController.swift */,
-				847B5490280DA1F500B315F4 /* OnboardingViewController+extension.swift */,
-				847B5492280DBD5C00B315F4 /* AddTaskViewController.swift */,
-				847B5498280DBF4300B315F4 /* AddTaskViewController+extension.swift */,
-				049FB606280F56EC005E07E3 /* MainScreenTabBarViewController.swift */,
-				849EB25F280AC2BC00CA552B /* Assets.xcassets */,
+				845656392811A2E800744590 /* Application Delegates */,
+				845656382811A2C000744590 /* ViewControllers */,
+				8456563B2811A31700744590 /* DataModel */,
+				8456563A2811A30C00744590 /* Cells */,
+				8456563C2811A33300744590 /* Resources */,
 				849EB261280AC2BC00CA552B /* LaunchScreen.storyboard */,
 				849EB264280AC2BC00CA552B /* Info.plist */,
 			);
@@ -234,6 +292,7 @@
 				049FB610280F5746005E07E3 /* DetailsTaskViewController.swift in Sources */,
 				849EB25B280AC2BA00CA552B /* ViewController.swift in Sources */,
 				847B5499280DBF4300B315F4 /* AddTaskViewController+extension.swift in Sources */,
+				8456563528117FB600744590 /* DataModel.xcdatamodeld in Sources */,
 				847B5497280DBEC400B315F4 /* OnboardingViewController.swift in Sources */,
 				847B5491280DA1F500B315F4 /* OnboardingViewController+extension.swift in Sources */,
 				049FB60D280F5731005E07E3 /* MonthTaskViewController.swift in Sources */,
@@ -522,6 +581,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8456563328117FB600744590 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8456563428117FB600744590 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 8456563428117FB600744590 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 849EB24B280AC2BA00CA552B /* Project object */;
 }

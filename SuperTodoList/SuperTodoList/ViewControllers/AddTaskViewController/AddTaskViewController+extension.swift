@@ -46,9 +46,27 @@ extension AddTaskViewController {
     }
     
     @objc func didTapAddTask() {
-        let alertController = UIAlertController(title: "Successful", message: "Task successfully added", preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
+        let tasker = TodaysTaskViewController()
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Successful", message: "Task successfully added", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
+            //MARK: - what happens when user press add task
+         //   tasker.tasks.append(textField.text)
+            
+            
+            print(textField.text)
+        }
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Add task here"
+            textField = alertTextField
+            print(alertTextField.text)
+            print("now")
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+        
+        
     }
 }
