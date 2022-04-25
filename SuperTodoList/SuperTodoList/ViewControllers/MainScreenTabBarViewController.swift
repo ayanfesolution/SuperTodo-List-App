@@ -18,7 +18,7 @@ class MainScreenTabBarViewController: UITabBarController {
     
     func setupViews(){
         
-       
+        
         self.tabBar.barTintColor = .darkGray
         self.tabBar.barStyle = .black
         self.tabBar.backgroundColor = #colorLiteral(red: 0.7809061817, green: 0.9714233575, blue: 1, alpha: 1)
@@ -35,7 +35,7 @@ class MainScreenTabBarViewController: UITabBarController {
         todayVC.title = "Today"
         addTaskVC.title = "Add Task"
         monthVC.title = "Month"
-       
+        
         //setting bar item images
         guard let items = self.tabBar.items else {return}
         let images = ["doc.text.image", "square.grid.3x1.folder.fill.badge.plus", "calendar.circle.fill"]
@@ -44,5 +44,5 @@ class MainScreenTabBarViewController: UITabBarController {
             items[x].image = UIImage(systemName: images[x])
         }
     }
-
+    
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-
+    
     let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Skip", for: .normal)
@@ -18,9 +18,9 @@ class OnboardingViewController: UIViewController {
         return button
         
     }()
-
+    
     let onboardingImage: UIImageView = {
-       let onbardingImage = UIImageView()
+        let onbardingImage = UIImageView()
         onbardingImage.backgroundColor = .white
         onbardingImage.image = UIImage(named: "OnboardingImage1")
         onbardingImage.clipsToBounds = true
@@ -55,7 +55,8 @@ class OnboardingViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapGetstarted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didTapGetstarted),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -63,10 +64,8 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-       
-        
         setupViews()
     }
     
-
+    
 }

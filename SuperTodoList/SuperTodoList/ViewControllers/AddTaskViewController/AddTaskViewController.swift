@@ -6,11 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTaskViewController: UIViewController {
     
+    var moc: NSManagedObjectContext!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     let titleTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.backgroundColor = .systemGray6
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -32,7 +36,7 @@ class AddTaskViewController: UIViewController {
         textView.textAlignment = .left
         textView.backgroundColor = .systemGray6
         textView.translatesAutoresizingMaskIntoConstraints = false
-               
+        
         return textView
     }()
     
@@ -51,18 +55,23 @@ class AddTaskViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .blue
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(didTapAddTask), for: .touchUpInside)
+        button.addTarget(self,
+                         action: #selector(didTapAddTask),
+                         for: .touchUpInside)
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationProps()
+        setupViews()
+        
+        moc = appDelegate.persistentContainer.viewContext
+    }
+    
+    private func setNavigationProps() {
         view.backgroundColor = .white
         navigationController?.popToRootViewController(animated: true)
         navigationItem.title = "Add Task"
-        
-
-        setupViews()
     }
-    
 }

@@ -45,28 +45,39 @@ extension AddTaskViewController {
         ])
     }
     
-    @objc func didTapAddTask() {
-        let tasker = TodaysTaskViewController()
-        var textField = UITextField()
-        
-        let alert = UIAlertController(title: "Successful", message: "Task successfully added", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (action) in
-            //MARK: - what happens when user press add task
-         //   tasker.tasks.append(textField.text)
-            
-            
-            print(textField.text)
+    @objc internal func didTapAddTask() {
+        guard let title = titleTextField.text,
+              title.count > 1,
+              let description = descriptionTextView.text,
+              description.count > 1 else {
+            return
         }
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Add task here"
-            textField = alertTextField
-            print(alertTextField.text)
-            print("now")
+
+        createTaskWith(title: title,
+                       description: description) {
+            resetFields()
+            switchToTodayViewController()
         }
+    }
+    
+    private func createTaskWith(title: String,
+                                description: String,
+                                completion: () -> Void) {
         
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        let newTask = Task(context: moc)
+        newTask.title = title
+        newTask.titleDescription = description
         
-        
+        appDelegate.saveContext()
+        completion()
+    }
+    
+    private func switchToTodayViewController() {
+        self.tabBarController?.selectedIndex = 0
+    }
+    
+    private func resetFields() {
+        titleTextField.text = nil
+        descriptionTextView.text = nil
     }
 }

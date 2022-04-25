@@ -8,7 +8,7 @@
 import UIKit
 
 class EditTaskViewController: UIViewController {
-
+    
     let containerView : UIView = {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,7 @@ class EditTaskViewController: UIViewController {
     }()
     
     let titleTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.backgroundColor = .systemGray6
         textField.borderStyle = .roundedRect
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -58,12 +58,12 @@ class EditTaskViewController: UIViewController {
         textView.textAlignment = .center
         textView.backgroundColor = .systemGray6
         textView.translatesAutoresizingMaskIntoConstraints = false
-               
+        
         return textView
     }()
     
     let taskDate : UIDatePicker = {
-       let date = UIDatePicker()
+        let date = UIDatePicker()
         date.translatesAutoresizingMaskIntoConstraints = false
         date.datePickerMode = .dateAndTime
         date.date = .now
@@ -97,10 +97,10 @@ class EditTaskViewController: UIViewController {
         let subviewList = [pageTitle ,titleLabel, titleTextField, descriptionTextView, descriptionLabel, taskDate, doneTaskButton]
         subviewList.forEach { subview in
             containerView.addSubview(subview) }
-
+        
         
         NSLayoutConstraint.activate([
-        
+            
             containerView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30),
             containerView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45),

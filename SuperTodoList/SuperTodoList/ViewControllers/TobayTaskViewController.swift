@@ -9,11 +9,10 @@ import UIKit
 import CoreData
 
 class TodaysTaskViewController: UIViewController {
-    //MARK: Creating an instance of the Todays task label and table view
-    //let tasks = ["task1", "task2", "task3", "task4"]
     
+    //MARK: Creating an instance of the Todays task label and table view
     var todoList = [Task]()
-    var moc:NSManagedObjectContext!
+    var moc: NSManagedObjectContext!
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     let todaysLabel : UILabel = {
@@ -26,34 +25,33 @@ class TodaysTaskViewController: UIViewController {
         return today
     }()
     
-    let todayTaskTableView = UITableView()
-    
-    
+    lazy var todayTaskTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TodayTableVewCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         view.backgroundColor = .white
-
+        
+        moc = appDelegate?.persistentContainer.viewContext
+        loadTasks()
     }
     
-    func setupView(){
-        
-        todayTaskTableView.register(TodaysTaskTableViewCell.self, forCellReuseIdentifier: TodaysTaskTableViewCell.identifier)
-        
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadTasks()
+    }
+    
+    private func setupView(){
         view.addSubview(todaysLabel)
         view.addSubview(todayTaskTableView)
-        todayTaskTableView.dataSource = self
-        todayTaskTableView.delegate = self
         
-        
-        todayTaskTableView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-      
-
-
         //constrainsts
         NSLayoutConstraint.activate([
             // Constraints For todaysLabel
@@ -68,34 +66,49 @@ class TodaysTaskViewController: UIViewController {
         ])
     }
     
-
+    private func loadTasks() {
+        let tasksRequest: NSFetchRequest<Task> = Task.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "added", ascending: false)
+        tasksRequest.sortDescriptors = [sortDescriptor]
+        
+        do {
+            try todoList = moc.fetch(tasksRequest)
+        } catch let error {
+            print("Error: \(error.localizedDescription) happened")
+        }
+        
+        todayTaskTableView.reloadData()
+    }
 }
 
 extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return todoList.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TodaysTaskTableViewCell.identifier, for: indexPath) as! TodaysTaskTableViewCell
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTableVewCell", for: indexPath)
         let todoList = todoList[indexPath.row]
-       
-     //   cell.task1
-        //cell.task.text = tasks[indexPath.row]
-        //cell.configure(tasks: "Go and buy Bread", imageName: "circle.circle")
+        
+        cell.textLabel?.text = todoList.title
+        cell.imageView?.image = UIImage(systemName: "star")
+        cell.detailTextLabel?.text = todoList.titleDescription
+        
         return cell
     }
     
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       return 50
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView,
-                      didSelectRowAt indexPath: IndexPath) {
-            let detailVC = DetailsTaskUIViewController()
+                   didSelectRowAt indexPath: IndexPath) {
+        let detailVC = DetailsTaskUIViewController()
         detailVC.modalPresentationStyle = .fullScreen
-           show(detailVC, sender: self)
-       }
+        show(detailVC, sender: self)
+    }
+    
 }

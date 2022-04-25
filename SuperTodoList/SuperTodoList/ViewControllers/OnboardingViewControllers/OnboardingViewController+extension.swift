@@ -17,14 +17,14 @@ extension OnboardingViewController {
     
     func setupViews() {
         
-      
+        
         
         let subviewsList = [onboardingImage, welcomeLabel, getstartedButton, whatshappeningtodayLabel, skipButton]
         
         subviewsList.forEach { subview in
             view.addSubview(subview)
         }
-
+        
         
         NSLayoutConstraint.activate([
             

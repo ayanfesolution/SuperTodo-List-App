@@ -33,14 +33,14 @@ class TodaysTaskTableViewCell: UITableViewCell {
         task1.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
     }
     
-    let icon : UIImageView = {
+    let icon: UIImageView = {
        let icon = UIImageView()
   //      icon.image = UIImage(systemName: "circle.circle")
         icon.translatesAutoresizingMaskIntoConstraints = false
         return icon
     }()
     
-    let task1 : UILabel = {
+    let task1: UILabel = {
         let task = UILabel()
   //      task.text = "Buy breead today"
         task.numberOfLines = 0
