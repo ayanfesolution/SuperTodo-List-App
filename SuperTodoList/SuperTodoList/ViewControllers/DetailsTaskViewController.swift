@@ -12,7 +12,7 @@ class DetailsTaskUIViewController: UIViewController {
     var item : Int = 0
     
     let taskTitle: UILabel = {
-       let task = UILabel()
+        let task = UILabel()
         task.font = .systemFont(ofSize: 25, weight: .medium)
         task.numberOfLines = 0
         task.text = "A Sample Place Holder"
@@ -107,14 +107,15 @@ class DetailsTaskUIViewController: UIViewController {
         ])
     }
     
+    
+    
     @objc func showEditViewController() {
-       let editVC = EditTaskViewController()
+        let editVC = EditTaskViewController()
         editVC.modalPresentationStyle = .automatic
         show(editVC, sender: self)
     }
     
     @objc func deleteTask() {
-        
         let backVC = MainScreenTabBarViewController()
         backVC.modalPresentationStyle = .fullScreen
         show(backVC, sender: self)
