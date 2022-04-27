@@ -90,13 +90,19 @@ extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodayTableVewCell", for: indexPath)
+//        var cell = tableView.dequeueReusableCell(withIdentifier: "TodayTableVewCell", for: indexPath)
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TodayTableVewCell")
+        
         let todoList = todoList[indexPath.row]
+        
+//        let todoDate = todoList.added as! Date
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MMMM d yyyy, hh:mm"
         
         cell.textLabel?.text = todoList.title
         cell.imageView?.image = UIImage(systemName: "star")
+//        cell.detailTextLabel?.text = dateFormatter.string(from: todoDate)
         cell.detailTextLabel?.text = todoList.titleDescription
-        
         return cell
     }
     
@@ -115,17 +121,14 @@ extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
         let todoList = self.todoList[indexPath.row]
         
         let detailVC = DetailsTaskUIViewController()
-        detailVC.modalPresentationStyle = .fullScreen
-        show(detailVC, sender: self)
+        let navBar = UINavigationController(rootViewController: detailVC)
+        navBar.modalPresentationStyle = .popover
+        show(navBar, sender: self)
         
-        
+        detailVC.title = "Todo Details"
         detailVC.taskTitle.text = self.todoList[indexPath.row].title
         detailVC.taskDescription.text = self.todoList[indexPath.row].titleDescription
-        
-        let editVC = EditTaskViewController()
-        editVC.titleTextField.placeholder = self.todoList[indexPath.row].title
-        editVC.descriptionTextView.text = self.todoList[indexPath.row].titleDescription
-    }
+        }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
@@ -156,10 +159,23 @@ extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
             let todoListToBeEdited = self.todoList[indexPath.row]
             
             let alert = UIAlertController(title: "Edit ToDo", message: "Kindly Update your info", preferredStyle: .alert)
+            alert.addTextField()
+            
+            alert.addTextField()
+            
+            let textField = alert.textFields?.first
+            textField?.text = self.todoList[indexPath.row].title
+            
+            let detailsTextField = alert.textFields?.last
+            detailsTextField?.text = self.todoList[indexPath.row].titleDescription
             
             let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
+                
                 let textField = alert.textFields?.first
                 todoListToBeEdited.setValue(textField?.text, forKey: "title")
+                
+                let detailsTextField = alert.textFields?.last
+                todoListToBeEdited.setValue(detailsTextField?.text, forKey: "titleDescription")
                 
                 do {
                     try managedContext.save()
