@@ -79,6 +79,7 @@ class TodaysTaskViewController: UIViewController {
         
         todayTaskTableView.reloadData()
     }
+    
 }
 
 extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
@@ -106,12 +107,72 @@ extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
+        
+        guard let appDelegete = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegete.persistentContainer.viewContext
+        
+        let todoList = self.todoList[indexPath.row]
+        
         let detailVC = DetailsTaskUIViewController()
         detailVC.modalPresentationStyle = .fullScreen
         show(detailVC, sender: self)
         
+        
         detailVC.taskTitle.text = self.todoList[indexPath.row].title
         detailVC.taskDescription.text = self.todoList[indexPath.row].titleDescription
+        
+        let editVC = EditTaskViewController()
+        editVC.titleTextField.placeholder = self.todoList[indexPath.row].title
+        editVC.descriptionTextView.text = self.todoList[indexPath.row].titleDescription
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            let todoListToBeDeleted = self.todoList[indexPath.row]
+            
+            managedContext.delete(todoListToBeDeleted)
+            
+            do {
+                try managedContext.save()
+                self.todoList = try managedContext.fetch(Task.fetchRequest())
+                tableView.reloadData()
+            } catch  {
+                return
+            }
+        }
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let action = UIContextualAction(style: .normal, title: "Edit") {(action, view, completionHandler) in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+            let managedContext = appDelegate.persistentContainer.viewContext
+            
+            let todoListToBeEdited = self.todoList[indexPath.row]
+            
+            let alert = UIAlertController(title: "Edit ToDo", message: "Kindly Update your info", preferredStyle: .alert)
+            
+            let saveButton = UIAlertAction(title: "Save", style: .default) { (action) in
+                let textField = alert.textFields?.first
+                todoListToBeEdited.setValue(textField?.text, forKey: "title")
+                
+                do {
+                    try managedContext.save()
+                    self.todoList = try managedContext.fetch(Task.fetchRequest())
+                    tableView.reloadData()
+                } catch {
+                    return
+                }
+            }
+            alert.addAction(saveButton)
+            self.present(alert, animated: true, completion: nil)
+            }
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+
 }

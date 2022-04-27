@@ -109,10 +109,12 @@ class DetailsTaskUIViewController: UIViewController {
     
     
     
-    @objc func showEditViewController() {
+    @objc public func showEditViewController() {
+
         let editVC = EditTaskViewController()
         editVC.modalPresentationStyle = .automatic
         show(editVC, sender: self)
+
     }
     
     @objc func deleteTask() {
