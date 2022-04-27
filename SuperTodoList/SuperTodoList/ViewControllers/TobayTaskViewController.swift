@@ -109,6 +109,9 @@ extension TodaysTaskViewController: UITableViewDataSource, UITableViewDelegate {
         let detailVC = DetailsTaskUIViewController()
         detailVC.modalPresentationStyle = .fullScreen
         show(detailVC, sender: self)
+        
+        detailVC.taskTitle.text = self.todoList[indexPath.row].title
+        detailVC.taskDescription.text = self.todoList[indexPath.row].titleDescription
     }
     
 }
